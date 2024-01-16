@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/random-seat/static/css/main.83fa0040.css",
+    "main.js": "/random-seat/static/js/main.f2dfd670.js",
+    "index.html": "/random-seat/index.html",
+    "main.83fa0040.css.map": "/random-seat/static/css/main.83fa0040.css.map",
+    "main.f2dfd670.js.map": "/random-seat/static/js/main.f2dfd670.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83fa0040.css",
+    "static/js/main.f2dfd670.js"
+  ]
+}
