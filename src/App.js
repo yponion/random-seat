@@ -138,7 +138,7 @@ function App() {
         <div className="container-block">
             <div className="container-flex">
                 <div className="nameList">
-                    <div>명단 ({numPeople}명)</div>
+                    <div className="div-front">명단 <span className="span-min">({numPeople}명)</span></div>
                     <textarea
                         placeholder='한줄에 한명씩 입력'
                         value={list}
@@ -150,20 +150,25 @@ function App() {
                             adjustHeight(e.target)
                         }}></textarea>
                     <br/>
-                    <button onClick={() => random()}>랜덤 배치</button>
+                    <button className="btn-random" onClick={() => random()}>랜덤 배치</button>
                 </div>
                 <div>
+                    <div className="btn-inner">
+                        <div className="btn-inner-inner">
+                            <button className="btn-add" onClick={() => addRow()}>행 +</button>
+                            <button className="btn-remove" onClick={() => removeRow()}>행 -</button>
+                            <button className="btn-add" onClick={() => addCol()}>열 +</button>
+                            <button className="btn-remove" onClick={() => removeCol()}>열 -</button>
+                            <button className="btn-reset" onClick={() => reset()}>초기화</button>
+                        </div>
+                        <p>각 자리 클릭시 공석 지정 또는 해제</p>
+                    </div>
                     <div>
-                        <div>칠판 ({rows.current * cols.current - disable.current}자리)</div>
+                        <div className="div-front">칠판 <span
+                            className="span-min">({rows.current * cols.current - disable.current}자리)</span>
+                        </div>
                     </div>
                     <div id="seatList" className="seatList"></div>
-                    <div>
-                        <button onClick={() => addRow()}>addRow</button>
-                        <button onClick={() => removeRow()}>removeRow</button>
-                        <button onClick={() => addCol()}>addCol</button>
-                        <button onClick={() => removeCol()}>removeCol</button>
-                        <button onClick={() => reset()}>reset</button>
-                    </div>
                 </div>
             </div>
         </div>

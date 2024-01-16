@@ -30,19 +30,103 @@ code {
 th, td {
     width: 50px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid #00ADB5;
     background-color: #E3FDFD;
     text-align: center;
     cursor: pointer;
 }
 
+table {
+    border-radius: 0px 0px 5px 5px;
+    border: 1px solid #71C9CE;
+    background-color: #E3FDFD;
+    width: 100%;
+}
+
 textarea {
+    border-radius: 0px 0px 5px 5px;
+    border: 1px solid #71C9CE;
+    background-color: #E3FDFD;
     padding: 10px;
     height: auto;
     width: 110px;
     max-height: 500px
 }
 
-button {
+.btn-random {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #71C9CE;
+    background-color: #A6E3E9;
     cursor: pointer;
 }
+
+.div-front {
+    box-sizing: border-box;
+    text-align: center;
+    height: 20px;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #71C9CE;
+    background-color: #A6E3E9;
+}
+
+.span-min {
+    font-size: 10px;
+}
+
+.span-max {
+
+}
+
+p {
+    font-size: 13px;
+    text-align: center;
+}
+
+.btn-inner {
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #A6E3E9;
+    margin-bottom: 10px;
+}
+
+.btn-inner-inner {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-add {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #00ADB5;
+    background-color: #71C9CE;
+    cursor: pointer;
+}
+
+.btn-remove {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #71C9CE;
+    background-color: #E3FDFD;
+    cursor: pointer;
+}
+
+.btn-reset {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #FFD1D1;
+    background-color: #FFE2E2;
+    cursor: pointer;
+}
+
