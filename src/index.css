@@ -1,4 +1,53 @@
+:root {
+    --background-color: white;
+    --color: black;
+    --td-border: #00ADB5;
+    --td-background-color: #E3FDFD;
+    --table-border: #71C9CE;
+    --table-background-color: #E3FDFD;
+    --textarea-border: #71C9CE;
+    --textarea-background-color: #E3FDFD;
+    --btn-random-border: #71C9CE;
+    --btn-random-background-color: #A6E3E9;
+    --div-front-border: #71C9CE;
+    --div-front-background-color: #A6E3E9;
+    --btn-inner-background-color: #A6E3E9;
+    --btn-add-border: #00ADB5;
+    --btn-add-background-color: #71C9CE;
+    --btn-remove-border: #71C9CE;
+    --btn-remove-background-color: #E3FDFD;
+    --btn-reset-border: #FFD1D1;
+    --btn-reset-background-color: #FFE2E2;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #131516;
+        --color: #d8d4cf;
+        --td-border: rgb(0, 192, 201);
+        --td-background-color: #054040;
+        --table-border: rgb(41, 114, 118);
+        --table-background-color: rgb(5, 64, 64);
+        --textarea-border: rgb(41, 114, 118);
+        --textarea-background-color: rgb(5, 64, 64);
+        --btn-random-border: rgb(41, 114, 118);
+        --btn-random-background-color: rgb(23, 88, 94);
+        --div-front-border: rgb(41, 114, 118);
+        --div-front-background-color: rgb(23, 88, 94);
+        --btn-inner-background-color: rgb(23, 88, 94);
+        --btn-add-border: rgb(0, 192, 201);
+        --btn-add-background-color: rgb(42, 119, 123);
+        --btn-remove-border: rgb(41, 114, 118);
+        --btn-remove-background-color: rgb(5, 64, 64);
+        --btn-reset-border: rgb(116, 0, 0);
+        --btn-reset-background-color: rgb(68, 0, 0);
+    }
+}
+
+
 body {
+    background-color: var(--background-color);
+    color: var(--color);
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -30,23 +79,24 @@ code {
 th, td {
     width: 50px;
     height: 30px;
-    border: 1px solid #00ADB5;
-    background-color: #E3FDFD;
+    border: 1px solid var(--td-border);
+    background-color: var(--td-background-color);
     text-align: center;
     cursor: pointer;
 }
 
 table {
     border-radius: 0px 0px 5px 5px;
-    border: 1px solid #71C9CE;
-    background-color: #E3FDFD;
+    border: 1px solid var(--table-border);
+    background-color: var(--table-background-color);
     width: 100%;
 }
 
 textarea {
     border-radius: 0px 0px 5px 5px;
-    border: 1px solid #71C9CE;
-    background-color: #E3FDFD;
+    color: var(--color);
+    border: 1px solid var(--textarea-border);
+    background-color: var(--textarea-background-color);
     padding: 10px;
     height: auto;
     width: 110px;
@@ -57,8 +107,9 @@ textarea {
     height: 30px;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid #71C9CE;
-    background-color: #A6E3E9;
+    color: var(--color);
+    border: 1px solid var(--btn-random-border);
+    background-color: var(--btn-random-background-color);
     cursor: pointer;
 }
 
@@ -67,9 +118,9 @@ textarea {
     text-align: center;
     height: 20px;
     width: 100%;
-    border-radius: 5px 5px 0px 0px;
-    border: 1px solid #71C9CE;
-    background-color: #A6E3E9;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid var(--div-front-border);
+    background-color: var(--div-front-background-color);
 }
 
 .span-min {
@@ -93,7 +144,7 @@ p {
     padding-bottom: 1px;
     width: 100%;
     border-radius: 5px;
-    background-color: #A6E3E9;
+    background-color: var(--btn-inner-background-color);
     margin-bottom: 10px;
 }
 
@@ -107,8 +158,9 @@ p {
     width: 50px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #00ADB5;
-    background-color: #71C9CE;
+    color: var(--color);
+    border: 1px solid var(--btn-add-border);
+    background-color: var(--btn-add-background-color);
     cursor: pointer;
 }
 
@@ -116,8 +168,9 @@ p {
     width: 50px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #71C9CE;
-    background-color: #E3FDFD;
+    color: var(--color);
+    border: 1px solid var(--btn-remove-border);
+    background-color: var(--btn-remove-background-color);
     cursor: pointer;
 }
 
@@ -125,8 +178,9 @@ p {
     width: 50px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #FFD1D1;
-    background-color: #FFE2E2;
+    color: var(--color);
+    border: 1px solid var(--btn-reset-border);
+    background-color: var(--btn-reset-background-color);
     cursor: pointer;
 }
 
