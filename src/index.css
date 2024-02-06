@@ -62,17 +62,29 @@ code {
     monospace;
 }
 
-.container-flex {
-    display: flex;
-    justify-content: space-evenly;
+/* 화면 너비가 768px 미만인 경우 */
+@media (max-width: 768px) {
+    .container-flex {
+        display: block;
+    }
+}
+
+/* 화면 너비가 768px 이상인 경우 */
+@media (min-width: 769px) {
+    .container-flex {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .container-block {
     display: block;
 }
 
-.nameList {
+.pd-10 {
     display: block;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 
@@ -100,7 +112,9 @@ textarea {
     background-color: var(--textarea-background-color);
     padding: 10px;
     height: auto;
-    width: 110px;
+    /*width: 110px;*/
+    width: 100%;
+    box-sizing: border-box;
     max-height: 500px
 }
 

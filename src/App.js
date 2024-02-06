@@ -137,7 +137,7 @@ function App() {
     return (
         <div className="container-block">
             <div className="container-flex">
-                <div className="nameList">
+                <div className="pd-10">
                     <div className="div-front">명단 <span className="span-min">({numPeople}명)</span></div>
                     <textarea
                         placeholder='한줄에 한명씩 입력'
@@ -151,8 +151,9 @@ function App() {
                         }}></textarea>
                     <br/>
                     <button className="btn-random" onClick={() => random()}>랜덤 배치</button>
+                    <br/><br/><br/>
                 </div>
-                <div>
+                <div className="pd-10">
                     <div className="btn-inner">
                         <div className="btn-inner-inner">
                             <button className="btn-add" onClick={() => addRow()}>행 +</button>
