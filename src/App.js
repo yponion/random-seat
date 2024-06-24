@@ -1,5 +1,5 @@
 import './App.css';
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
     const [list, setList] = useState(''); // 명단 textarea
@@ -8,14 +8,55 @@ function App() {
     const rows = useRef(5) // 행
     const cols = useRef(6) // 열
     const disable = useRef(0); // 비활성화 된 자리 수
+    const [isToggled, setIsToggled] = useState(false);
+    const toggleRef = useRef(isToggled);
 
-    // 페이지 로딩 시 최초 한번 기본값의 행렬으로 테이블 생성
+
+    const [saveTarget, setSaveTarget] = useState(false)
+    const [saveColor, setSaveColor] = useState();
+    const [saveContent, setSaveContent] = useState()
+    const [saveRow, setSaveRow] = useState()
+    const [saveCol, setSaveCol] = useState()
+
+    const saveTartgetRef = useRef(false)
+    const saveColorRef = useRef()
+    const saveContentRef = useRef()
+    const saveRowRef = useRef()
+    const saveColRef = useRef()
+
+    // 토글 함수
+    const handleToggle = () => {
+        if (saveTartgetRef.current) {
+            document.getElementById('tid').rows[saveRowRef.current].cells[saveColRef.current].style.backgroundColor = saveColorRef.current
+            setSaveTarget(false)
+        }
+        setIsToggled(!isToggled);
+    };
+
+    // 토글 상태를 useRef로 동기화
+    useEffect(() => {
+        toggleRef.current = isToggled;
+    }, [isToggled]);
+
+    useEffect(() => {
+        saveTartgetRef.current = saveTarget;
+        saveColorRef.current = saveColor
+        saveContentRef.current = saveContent
+        saveRowRef.current = saveRow
+        saveColRef.current = saveCol
+    }, [saveTarget]);
+
+    // 페이지 로딩 시 최초 한번 기본값의 행렬로 테이블 생성
     useEffect(() => {
         createTable(rows.current, cols.current);
     }, []);
 
     // 랜덤 배치 버튼 클릭 시 우측 테이블에 이름을 랜덤으로 넣어줌
     const random = () => {
+        if (saveTartgetRef.current) {
+            document.getElementById('tid').rows[saveRowRef.current].cells[saveColRef.current].style.backgroundColor = saveColorRef.current
+            setSaveTarget(false)
+        }
         let table = document.getElementById('tid');
         if (!table) return; // 테이블이 없으면 함수 종료
 
@@ -41,7 +82,7 @@ function App() {
             return;
         }
 
-        // 명단의 각 행(빙 행 제외)의 이름을 가져와 테이블에 삽입
+        // 명단의 각 행(빈 행 제외)의 이름을 가져와 테이블에 삽입
         let lines = list.split('\n');
         let nonEmptyLines = lines.filter(line => line.trim() !== '');
         for (let i = 0; i < nonEmptyLines.length; i++) {
@@ -58,7 +99,7 @@ function App() {
                 }
             }
             check = true;
-            while (check) { // 랜덤으로 정한 열이 활성화 되고 빈행이라면 탈출
+            while (check) { // 랜덤으로 정한 열이 활성화 되고 빈 행이라면 탈출
                 c = Math.floor(Math.random() * cols.current)
                 if (table.rows[r].cells[c].style.backgroundColor === 'rgb(227, 253, 253)' && table.rows[r].cells[c].textContent === '') {
                     check = false
@@ -100,7 +141,29 @@ function App() {
                 let td = tr.insertCell();
                 td.style.backgroundColor = '#E3FDFD'
                 td.addEventListener('click', function () {
-                    this.style.backgroundColor = this.style.backgroundColor === 'rgb(227, 253, 253)' ? enableFalse() : enableTrue();
+                    if (!toggleRef.current) {
+                        this.style.backgroundColor = this.style.backgroundColor === 'rgb(227, 253, 253)' ? enableFalse() : enableTrue();
+                    } else {
+                        // 자리 교체 로직
+                        // 자리 교체를 위한 추가 로직 구현 필요
+                        if (saveTartgetRef.current){
+                            this.parentNode.parentNode.parentNode.rows[saveRowRef.current].cells[saveColRef.current].style.backgroundColor = this.style.backgroundColor
+                            this.style.backgroundColor = saveColorRef.current
+                            this.parentNode.parentNode.parentNode.rows[saveRowRef.current].cells[saveColRef.current].textContent = this.textContent
+                            this.textContent = saveContentRef.current
+
+                            setSaveTarget(false)
+                        }else {
+                            setSaveColor(this.style.backgroundColor)
+                            setSaveContent(this.textContent)
+                            setSaveRow(this.parentNode.rowIndex)
+                            setSaveCol(this.cellIndex)
+                            setSaveTarget(true)
+                            this.style.backgroundColor = 'rgb(255,150,150)'
+                        }
+
+
+                    }
                 });
             }
         }
@@ -151,7 +214,22 @@ function App() {
                         }}></textarea>
                     <br/>
                     <button className="btn-random" onClick={() => random()}>랜덤 배치</button>
-                    <br/><br/><br/>
+                    <br/><br/>
+                    <div className="toggle-container">
+                      <input
+                        type="checkbox"
+                        id="toggle-button"
+                        className="toggle-input"
+                        checked={isToggled}
+                        onChange={handleToggle}
+                      />
+                      <label htmlFor="toggle-button" className="toggle-label">
+                        <span className={`toggle-text ${isToggled ? 'toggled' : ''}`}>
+                          {isToggled ? '자리 교체' : '자리 비활성화'}
+                        </span>
+                      </label>
+                    </div>
+                    <br/>
                 </div>
                 <div className="pd-10">
                     <div className="btn-inner">
